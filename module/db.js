@@ -82,13 +82,69 @@ class Db{
         })
     }
 
+    //
+    insert(collectionName, json){
 
-    insert(){
+        return new Promise((resolve, reject)=>{
+
+            this.connect().then((db)=>{
+
+                db.collection(collectionName).insertOne(json, function(err, result){
+
+                    if(err){
+                        reject(err);
+                    }else{
+                        resolve(result);
+                    }
+
+                })
+
+            })
+        })
 
     }
 
+    //json1条件     json2数据
+    update(collectionName, json1, json2){
 
-    update(){
+        return new Promise((resolve, reject)=>{
+
+            this.connect().then((db)=>{
+                
+                db.collection(collectionName).updateOne(json1, {$set:json2}, (err, result)=>{
+
+                    if(err){
+                        reject(err);
+                    }else{
+                        resolve(result);
+                    }
+
+                })
+            })
+
+        })
+
+    }
+
+    //
+    remove(collectionName, json){
+
+        return new Promise((resolve, reject)=>{
+
+            this.connect().then((db)=>{
+                
+                db.collection(collectionName).removeOne(json, (err, result)=>{
+
+                    if(err){
+                        reject(err);
+                    }else{
+                        resolve(result);
+                    }
+
+                })
+            })
+
+        })
 
     }
 

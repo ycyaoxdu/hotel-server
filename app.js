@@ -63,6 +63,27 @@ router.get('/', async (ctx)=>{
   console.log(ctx.params);
   ctx.body='test';
 })
+//
+router.get('/signup', async (ctx)=>{
+
+  let data = await db.insert('user', {"username":"zhangsan", "password":"123"});
+  console.log(data);
+
+})
+//
+router.get('/edit', async (ctx)=>{
+
+  let data = await db.update('user', {"username":"zhangsan"}, {"password":"abcdef"});
+  console.log(data);
+
+})
+//
+router.get('/delete', async (ctx)=>{
+
+  let data = await db.remove('user', {"username":"zhangsan"});
+  console.log(data);
+
+})
 
 
 //
