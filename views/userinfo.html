@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="UTF-8">
+        <title></title>
+        <link rel="stylesheet" href="css/head.css">
+    </head>
+
+    <body>
+        <h2 class="title">user table</h2>        
+
+        <br>
+
+        <a href="/signup">add user</a>
+
+        <br>
+        <br>
+
+        <table class="table">
+
+            <tr>
+                <th>name</th>
+                <th>pass</th>
+                <th>priv</th>
+            </tr>
+
+            {{each list}}
+            <tr>
+                <td>{{$value.username}}</td>
+                <td>{{$value.password}}</td>
+                <td>{{$value.isSuper}}</td>
+                <td><a href="#">edit</a> <a href="#">delete</a> </td>
+            </tr>
+            {{/each}}
+            
+        </table>
+
+
+    </body>
+
+</html>

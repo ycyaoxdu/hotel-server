@@ -4,6 +4,7 @@ const Router = require('koa-router');
 const views = require('koa-views');
 const bodyParser = require('koa-bodyparser');
 const static = require('koa-static');
+const render = require('koa-art-template');
 
 
 //实例化
@@ -16,6 +17,14 @@ const db = require('./module/db');
 
 //引入自定义模块
 // const common = require('./module/common');
+
+//配置render
+render(app, {
+  root: './views',
+  extname: '.html',
+  debug: process.env.NODE_ENV !== 'production'
+});
+
 
 
 
@@ -44,8 +53,6 @@ router.get('/', async (ctx)=>{
   console.log(result);
 
 
-
-
   let title = "nihao";
   await ctx.render('index', {
     title:title
@@ -63,21 +70,52 @@ router.get('/', async (ctx)=>{
   console.log(ctx.params);
   ctx.body='test';
 })
-//
-router.get('/signup', async (ctx)=>{
 
-  let data = await db.insert('user', {"username":"zhangsan", "password":"123"});
-  console.log(data);
+
+//显示信息
+router.get('/user', async (ctx)=>{
+
+  var result = await db.find('user', {});
+
+  await ctx.render('userinfo', {
+    list:result 
+  });
 
 })
-//
+
+//管理员用户注册
+router.get('/signup', async (ctx)=>{
+//  let data = await db.insert('user', {"username":"zhangsan", "password":"123"});
+//  console.log(data);
+
+  await ctx.render('signup');
+
+})
+router.post('/doSignup', async (ctx)=>{
+  //获取表单数据
+  let data = await db.insert('user', ctx.request.body);
+
+  try{
+    if(data.result.ok){
+      ctx.redirect('/')
+    }
+  }catch(err){
+    console.log(err);
+    ctx.redirect('/signup');
+  }
+
+})
+
+
+
+//信息修改
 router.get('/edit', async (ctx)=>{
 
   let data = await db.update('user', {"username":"zhangsan"}, {"password":"abcdef"});
   console.log(data);
 
 })
-//
+//删除
 router.get('/delete', async (ctx)=>{
 
   let data = await db.remove('user', {"username":"zhangsan"});
