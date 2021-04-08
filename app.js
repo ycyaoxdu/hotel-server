@@ -3,10 +3,15 @@ const Koa = require('koa');
 const Router = require('koa-router');
 const views = require('koa-views');
 const bodyParser = require('koa-bodyparser');
+const static = require('koa-static');
+
 
 //实例化
 const app = new Koa();
 const router = new Router();
+
+//db
+const db = require('./module/db');
 
 
 //引入自定义模块
@@ -24,6 +29,9 @@ app.use(views('views', {
 /**bodyparser */
 app.use(bodyParser());
 
+/**static */
+app.use(static('static'));
+
 
 //  //
 
@@ -32,6 +40,12 @@ app.use(bodyParser());
 router.get('/', async (ctx)=>{
   //ctx.body = 'index';   //返回数据
   
+  var result = await db.find('user', {});
+  console.log(result);
+
+
+
+
   let title = "nihao";
   await ctx.render('index', {
     title:title
