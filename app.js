@@ -1,17 +1,29 @@
 //引入
 const Koa = require('koa');
 const Router = require('koa-router');
-
+const views = require('koa-views');
 
 //实例化
 const app = new Koa();
 const router = new Router();
 
 
+
+
+//  //中间件
+/**配置模板引擎 */
+app.use(views('views', {
+  extension:'ejs'
+}));
+
+//  //
+
+
 //配置路由
 router.get('/', async (ctx)=>{
 
-  ctx.body = 'index';   //返回数据
+  //ctx.body = 'index';   //返回数据
+  await ctx.render('index');
 
 }).get('/new', async (ctx)=>{
 
@@ -37,9 +49,6 @@ app
 //
 
 
-//中间件
-
-//
 
 
 
