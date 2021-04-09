@@ -4,6 +4,7 @@
 
 const MongoClient = require('mongodb').MongoClient;
 const Config = require('./config');
+const ObjectID = require('mongodb').ObjectID;
 
 
 class Db{
@@ -145,6 +146,13 @@ class Db{
             })
 
         })
+
+    }
+
+    //getObjID
+    getObjectID(id){
+
+        return new ObjectID(id);
 
     }
 

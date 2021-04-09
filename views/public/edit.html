@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="UTF-8">
+        <title></title>
+    </head>
+
+    <body>
+        <h2 class="title">Edit</h2>        
+
+        <form action="/doEdit" method="POST">
+            <input type="hidden" name="id" value="{{@list._id}}"/>
+            <br>
+            username：<input type="text" name="username" value="{{list.username}}"/>
+            <br>
+            password: <input type="password" name="password" value="{{list.password}}"/>
+            <br>
+            <button type="submit">submit</button>
+        </form>
+
+
+    </body>
+</html>

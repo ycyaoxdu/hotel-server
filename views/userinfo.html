@@ -29,7 +29,7 @@
                 <td>{{$value.username}}</td>
                 <td>{{$value.password}}</td>
                 <td>{{$value.isSuper}}</td>
-                <td><a href="#">edit</a> <a href="#">delete</a> </td>
+                <td><a href="/edit?id={{@$value._id}}">edit</a> <a href="/delete?id={{@$value._id}}">delete</a> </td>
             </tr>
             {{/each}}
             

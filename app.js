@@ -111,15 +111,61 @@ router.post('/doSignup', async (ctx)=>{
 //信息修改
 router.get('/edit', async (ctx)=>{
 
-  let data = await db.update('user', {"username":"zhangsan"}, {"password":"abcdef"});
-  console.log(data);
+//  let data = await db.update('user', {"username":"zhangsan"}, {"password":"abcdef"});
+//  console.log(data);
+
+  //通过id获取用户
+  let id = ctx.query.id;
+  let data = await db.find('user', {"_id":db.getObjectID(id)});
+
+
+
+  await  ctx.render('./public/edit', {
+
+    list:data[0]    //id
+
+  });
+
 
 })
+router.post('/doEdit', async (ctx)=>{
+
+  var id = ctx.request.body.id;
+  var username = ctx.request.body.username;
+  var password = ctx.request.body.password;
+
+
+  let data = await db.update('user', {"_id":db.getObjectID(id)}, {
+    username, password
+  } )
+
+  try{
+    if(data.result.ok){
+      
+      ctx.redirect('/user')
+    }
+  }catch(err){
+    console.log(err);
+    
+    ctx.redirect('/doEdit');
+  }
+
+})
+
+
+
 //删除
 router.get('/delete', async (ctx)=>{
+//  let data = await db.remove('user', {"username":"zhangsan"});
+//  console.log(data);
 
-  let data = await db.remove('user', {"username":"zhangsan"});
-  console.log(data);
+  let id = ctx.query.id;
+
+  var data = await db.remove('user', {"_id":db.getObjectID(id)});
+
+  if(data){
+    ctx.redirect('/user');
+  }
 
 })
 
