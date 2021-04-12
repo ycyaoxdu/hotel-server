@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="UTF-8">
+        <title></title>
+    </head>
+
+    <body>
+        <h2 class="title">Edit Room Info</h2>        
+
+        <form action="/admin/room/doEdit" method="POST">
+            <input type="hidden" name="id" value="{{@list._id}}"/>
+            <br>
+            room name  ：<input type="text" name="roomName" value="{{list.roomName}}"/>
+            <br>
+            room type  : <input type="text" name="roomType" value="{{list.roomType}}"/>
+            <br>
+            room price ：<input type="text" name="roomPrice" value="{{list.roomPrice}}"/>
+            <br>
+            room status：<input type="text" name="roomStatus" value="{{list.roomStatus}}"/>
+            <br>
+            <button type="submit">submit</button>
+        </form>
+
+
+    </body>
+</html>
