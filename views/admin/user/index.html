@@ -3,7 +3,6 @@
     <head>
         <meta charset="UTF-8">
         <title></title>
-        <link rel="stylesheet" href="css/head.css">
     </head>
 
     <body>
@@ -11,7 +10,7 @@
 
         <br>
 
-        <a href="/signup">add user</a>
+        <a href="/admin/user/add">add user</a>
 
         <br>
         <br>
@@ -29,7 +28,7 @@
                 <td>{{$value.username}}</td>
                 <td>{{$value.password}}</td>
                 <td>{{$value.isSuper}}</td>
-                <td><a href="/edit?id={{@$value._id}}">edit</a> <a href="/delete?id={{@$value._id}}">delete</a> </td>
+                <td><a href="/admin/user/edit?id={{@$value._id}}">edit</a> <a href="/admin/user/delete?id={{@$value._id}}">delete</a> </td>
             </tr>
             {{/each}}
             
