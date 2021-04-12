@@ -9,9 +9,11 @@ const advice = require('./admin/advice');
 //
 
 
-router.get('/', (ctx)=>{
+router.get('/', async (ctx)=>{
 
-    ctx.body = 'admin index';
+    // ctx.body = 'admin index';
+
+    await ctx.render('admin/index');
 
 })
 
