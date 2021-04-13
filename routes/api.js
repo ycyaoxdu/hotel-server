@@ -5,19 +5,19 @@ const router = require('koa-router')();
 
 router.get('/', (ctx)=>{
 
-    ctx.body = 'api index';
+    ctx.body = 'server api';
 
 })
 
-router.get('/user', (ctx)=>{
+router.get('/userinfo', (ctx)=>{
     
-    ctx.body = 'api user';
+    ctx.body = 'server api userinfo';
 
 })
 
 router.get('/order', (ctx)=>{
 
-    ctx.body = 'order';
+    ctx.body = 'server api order';
 
 })
 
