@@ -6,13 +6,12 @@ const db = require('../../module/db');
 
 
 //显示信息
-router.get('/', async (ctx)=>{
+router.post('/', async (ctx)=>{
 
-  var result = await db.find('userinfo', {});
-
-  await ctx.render('api/userinfo/index', {
-    list:result 
-  });
+  ctx.body = 'user info api'
+  //await console.log(ctx)
+  //await console.log(ctx.request)
+  await console.log(ctx.request.body)
 
 })
 
