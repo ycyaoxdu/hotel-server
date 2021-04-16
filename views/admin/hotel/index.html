@@ -6,11 +6,7 @@
     </head>
 
     <body>
-        <h2 class="title">Room Table</h2>        
-
-        <br>
-
-        <a href="/admin/hotel/add">add hotel</a>
+        <h2 class="title">hotel Info</h2>        
 
         <br>
         <br>
@@ -19,17 +15,17 @@
 
             <tr>
                 <th>name</th>
-                <th>type</th>
-                <th>price</th>
-                <th>status</th>
+                <th>telephone</th>
+                <th>address</th>
+                <th></th>
             </tr>
 
             {{each list}}
             <tr>
-                <td>{{$value.username}}</td>
-                <td>{{$value.password}}</td>
-                <td>{{$value.isSuper}}</td>
-                <td><a href="/admin/hotel/edit?id={{@$value._id}}">edit</a> <a href="/admin/hotel/delete?id={{@$value._id}}">delete</a> </td>
+                <td>{{$value.name}}</td>
+                <td>{{$value.telephone}}</td>
+                <td>{{$value.address}}</td>
+                <td><a href="/admin/hotel/edit?id={{@$value._id}}">edit</a>  </td>
             </tr>
             {{/each}}
             

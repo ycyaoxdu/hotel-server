@@ -11,13 +11,11 @@
         <form action="/admin/hotel/doEdit" method="POST">
             <input type="hidden" name="id" value="{{@list._id}}"/>
             <br>
-            room name  ：<input type="text" name="roomName" value="{{list.roomName}}"/>
+            name      ： <input type="text" name="name" value="{{list.name}}"/>
             <br>
-            room type  : <input type="text" name="roomType" value="{{list.roomType}}"/>
+            telephone ： <input type="text" name="telephone" value="{{list.telephone}}"/>
             <br>
-            room price ：<input type="text" name="roomPrice" value="{{list.roomPrice}}"/>
-            <br>
-            room status：<input type="text" name="roomStatus" value="{{list.roomStatus}}"/>
+            address   ： <input type="text" name="address" value="{{list.address}}"/>
             <br>
             <button type="submit">submit</button>
         </form>

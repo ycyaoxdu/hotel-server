@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="UTF-8">
+        <title></title>
+    </head>
+
+    <body>
+        <h2 class="title">user table</h2>        
+
+        <br>
+        <br>
+
+        <table class="table">
+
+            <tr>
+                <th>name</th>
+                <th>phone</th>
+                <th>type</th>
+                <th>start</th>
+                <th>end</th>
+                <th>createTime</th>
+                <th>status</th>
+            </tr>
+
+            {{each list}}
+            <tr>
+                <td>{{$value.name}}</td>
+                <td>{{$value.phone}}</td>
+                <td>{{$value.type}}</td>
+                <td>{{$value.start}}</td>
+                <td>{{$value.end}}</td>
+                <td>{{$value.createTime}}</td>
+                <td>{{$value.status}}</td>
+                <td><a href="/admin/order/edit?id={{@$value._id}}">更新状态</a> </td>
+            </tr>
+            {{/each}}
+            
+        </table>
+
+
+    </body>
+
+</html>

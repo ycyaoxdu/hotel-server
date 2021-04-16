@@ -4,6 +4,7 @@ const router = require('koa-router')();
 const order = require('./api/order');
 const index = require('./api/index');
 const userinfo = require('./api/userinfo');
+const advice = require('./api/advice');
 
 
 router.get('/', (ctx)=>{
@@ -16,8 +17,8 @@ router.get('/', (ctx)=>{
 
 router.use('/order', order);
 router.use('/index', index);
-router.use('/userinfo', userinfo)
-
+router.use('/userinfo', userinfo);
+router.use('/advice', advice);
 
 
 
