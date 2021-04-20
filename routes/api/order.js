@@ -51,7 +51,7 @@ router.post('/doEdit', async (ctx)=>{
   var start = ctx.request.body.start;
   var end = ctx.request.body.end;
 
-  let data = await db.update('order', { "openid" : ctx.request.body.openid }, {
+  let data = await db.update('order', { "_id" : db.getObjectID(ctx.request.body._id)  }, {
     name, phone, type, start, end 
   } ) 
 
@@ -60,13 +60,16 @@ router.post('/doEdit', async (ctx)=>{
 })
 
 //
-router.get('/editStatus', async (ctx)=>{
+router.post('/editStatus', async (ctx)=>{
   var status = ctx.request.body.status;
-  console.log(status)
-  let data = await db.update('order', { "openid" : ctx.request.body.openid }, {
+  let data = await db.update('order', { "_id" : db.getObjectID(ctx.request.body._id) }, {
     status 
   })
   ctx.body = 'paid success';
+
+  console.log(ctx.request.body) 
+  //console.log(status)
+  //console.log(ctx.request.body._id)
 
 })
 
@@ -78,7 +81,7 @@ router.get('/delete', async (ctx)=>{
 //  let data = await db.remove('order', {"ordername":"zhangsan"});
 //  console.log(data);
 
-  var data = await db.remove('order', { "openid" : ctx.request.body.openid}); 
+  var data = await db.remove('order', { "_id" : db.getObjectID(ctx.request.body._id) }); 
 //
 })
 
