@@ -9,7 +9,7 @@ const db = require('../../module/db');
 //接收code--》请求接口--》记录openid
 
 let appid = "wx3590eb11fdf22ed3";
-let secret = "";
+let secret = "91cafdbbc078432640474f36c783b7e0";
 let grant_type ="authorization_code";
 
 

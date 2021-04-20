@@ -7,7 +7,11 @@
 
     <body>
         <h2 class="title">Room Table</h2>        
-
+        <br>
+        <a href="/admin">回到首页</a>
+        <br>
+        <br>
+        <br>
         <br>
 
         <a href="/admin/room/add">add room</a>
@@ -20,7 +24,6 @@
             <tr>
                 <th>name</th>
                 <th>type</th>
-                <th>price</th>
                 <th>status</th>
             </tr>
 
@@ -28,7 +31,6 @@
             <tr>
                 <td>{{$value.roomName}}</td>
                 <td>{{$value.roomType}}</td>
-                <td>{{$value.roomPrice}}</td>
                 <td>{{$value.roomStatus}}</td>
                 <td><a href="/admin/room/edit?id={{@$value._id}}">edit</a> <a href="/admin/room/delete?id={{@$value._id}}">delete</a> </td>
             </tr>

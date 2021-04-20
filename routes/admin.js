@@ -9,11 +9,29 @@ const advice = require('./admin/advice');
 //
 
 
-router.get('/', async (ctx)=>{
 
-    // ctx.body = 'admin index';
 
-    await ctx.render('admin/index');
+
+
+
+//
+router.get('/', async (ctx) => {
+
+
+    try {
+        if (ctx.session.userInfo) {
+            ctx.body = { code: 1, message: '已登陆' }
+
+            await ctx.render('admin/index');
+            
+        } else {
+            ctx.body = { code: 0, message: '未登陆' }
+            // 跳转到登录页
+            ctx.redirect('/index')
+        }
+    } catch (err) {
+        throw new Error(err)
+    }
 
 })
 
@@ -22,7 +40,7 @@ router.get('/', async (ctx)=>{
 router.use('/user', user);
 
 //room submodule
-router.use('/room' , room);
+router.use('/room', room);
 
 //order submodule
 router.use('/order', order);
@@ -32,6 +50,12 @@ router.use('/hotel', hotel);
 
 //advice submodule
 router.use('/advice', advice);
+
+
+
+
+
+
 
 
 

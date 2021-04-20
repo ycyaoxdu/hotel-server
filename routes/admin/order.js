@@ -7,11 +7,26 @@ const db = require('../../module/db');
 //显示信息
 router.get('/', async (ctx)=>{
 
-    var result = await db.find('order', {});
+  try {
+    if (ctx.session.userInfo) {
+      ctx.body = {code: 1, message: '已登陆'}
+
+      var result = await db.find('order', {});
   
-    await ctx.render('admin/order/index', {
-      list:result 
-    });
+      await ctx.render('admin/order/index', {
+        list:result 
+      });
+
+    } else {
+      ctx.body = {code: 0, message: '未登陆'}
+      // 跳转到登录页
+      ctx.redirect('/index')
+    }
+  } catch(err) {
+    throw new Error(err)
+  }
+
+
   
   })
 
