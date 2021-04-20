@@ -1,25 +1,40 @@
 <!DOCTYPE html>
 <html>
-    <head>
-        <meta charset="UTF-8">
-        <title></title>
-    </head>
 
-    <body>
-        <h2 class="title">Edit Room Info</h2>        
+<head>
+    <meta charset="UTF-8">
+    <title></title>
+</head>
 
-        <form action="/admin/hotel/doEdit" method="POST">
-            <input type="hidden" name="id" value="{{@list._id}}"/>
-            <br>
-            name      ： <input type="text" name="name" value="{{list.name}}"/>
-            <br>
-            telephone ： <input type="text" name="telephone" value="{{list.telephone}}"/>
-            <br>
-            address   ： <input type="text" name="address" value="{{list.address}}"/>
-            <br>
-            <button type="submit">submit</button>
-        </form>
+<body>
+    <h2 class="title">Edit Room Info</h2>
+
+    <form action="/admin/hotel/doEdit" method="POST">
+        <input type="hidden" name="id" value="{{@list._id}}" />
+        <br>
+        酒店名称： <input type="text" name="name" value="{{list.name}}" />
+        <br>
+        酒店电话： <input type="tel" name="telephone" value="{{list.telephone}}" />
+        <br>
+        酒店地址： <input type="text" name="address" value="{{list.address}}" />
+        <br>
+        酒店简介： <input type="text" name="introduction" value="{{list.introduction}}" />
+        <br>
+        酒店状态： <input type="text" name="status" value="{{list.status}}" />
+        <br>
+        装修时间： <input type="date" name="decorateTime" value="{{list.decorateTime}}" />
+        <br>
+        单人间价格： <input type="number" name="singleRoomPrice" value="{{list.singleRoomPrice}}" />
+        <br>
+        双人间价格： <input type="number" name="doubleRoomPrice" value="{{list.doubleRoomPrice}}" />
 
 
-    </body>
+        <br>
+        <br>
+        <button type="submit">submit</button>
+    </form>
+
+
+</body>
+
 </html>

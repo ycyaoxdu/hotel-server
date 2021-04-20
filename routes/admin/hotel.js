@@ -59,12 +59,15 @@ router.get('/edit', async (ctx) => {
 router.post('/doEdit', async (ctx) => {
 
   var id = ctx.request.body.id;
-  var name = ctx.request.body.name;
-  var telephone = ctx.request.body.telephone;
-  var address = ctx.request.body.address;
+  var {    name, telephone, address, introduction, status, decorateTime, singleRoomPrice, doubleRoomPrice
+  } = ctx.request.body; 
+
+
+
+
 
   let data = await db.update('hotel', { "_id": db.getObjectID(id) }, {
-    name, telephone, address
+    name, telephone, address, introduction, status, decorateTime, singleRoomPrice, doubleRoomPrice
   })
 
   try {

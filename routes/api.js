@@ -5,6 +5,7 @@ const order = require('./api/order');
 const index = require('./api/index');
 const userinfo = require('./api/userinfo');
 const advice = require('./api/advice');
+const hotel = require('./api/hotel');
 
 
 router.get('/', (ctx)=>{
@@ -19,6 +20,7 @@ router.use('/order', order);
 router.use('/index', index);
 router.use('/userinfo', userinfo);
 router.use('/advice', advice);
+router.use('/hotel', hotel);
 
 
 
