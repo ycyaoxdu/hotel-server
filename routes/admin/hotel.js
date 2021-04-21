@@ -2,12 +2,6 @@ const router = require('koa-router')();
 const db = require('../../module/db');
 
 
-/***
- * 
- * 待做：添加房间价格信息
-*/
-
-
 
 
 //显示信息
@@ -59,7 +53,7 @@ router.get('/edit', async (ctx) => {
 router.post('/doEdit', async (ctx) => {
 
   var id = ctx.request.body.id;
-  var {    name, telephone, address, introduction, status, decorateTime, singleRoomPrice, doubleRoomPrice
+  var {    name, telephone, address, introduction, status, decorateTime, singleRoomPrice, doubleRoomPrice, singleRoomInfo, doubleRoomInfo
   } = ctx.request.body; 
 
 
@@ -67,7 +61,7 @@ router.post('/doEdit', async (ctx) => {
 
 
   let data = await db.update('hotel', { "_id": db.getObjectID(id) }, {
-    name, telephone, address, introduction, status, decorateTime, singleRoomPrice, doubleRoomPrice
+    name, telephone, address, introduction, status, decorateTime, singleRoomPrice, doubleRoomPrice, singleRoomInfo, doubleRoomInfo
   })
 
   try {

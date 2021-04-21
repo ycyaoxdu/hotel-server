@@ -37,7 +37,13 @@ router.post('/edit', async (ctx)=>{
 
   //通过id获取用户
   let data = await db.find('order', { "openid" : ctx.request.body.openid});
-  //console.log(data)
+
+  data.sort( (a, b) => {
+    return b.createTime - a.createTime;
+  });
+
+
+  console.log(data)
   ctx.body = data
 
 
@@ -77,12 +83,18 @@ router.post('/editStatus', async (ctx)=>{
 
 
 //删除
-router.get('/delete', async (ctx)=>{
+router.post('/delete', async (ctx)=>{
 //  let data = await db.remove('order', {"ordername":"zhangsan"});
 //  console.log(data);
 
   var data = await db.remove('order', { "_id" : db.getObjectID(ctx.request.body._id) }); 
 //
+  //console.log(data)
+  if(data){
+    ctx.body = 'order canceled';
+
+  }
+  console.log(ctx.request.body)
 })
 
 

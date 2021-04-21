@@ -27,6 +27,9 @@
                 <th>decorateTime</th>
                 <th>singleRoomPrice</th>
                 <th>doubleRoomPrice</th>
+                <th>singleRoomInfo</th>
+                <th>doubleRoomInfo</th>
+
                 <th></th>
             </tr>
 
@@ -40,6 +43,8 @@
                 <td>{{$value.decorateTime}}</td>
                 <td>{{$value.singleRoomPrice}}</td>
                 <td>{{$value.doubleRoomPrice}}</td>
+                <td>{{$value.singleRoomInfo}}</td>
+                <td>{{$value.doubleRoomInfo}}</td>
 
                 <td><a href="/admin/hotel/edit?id={{@$value._id}}">edit</a>  </td>
             </tr>
