@@ -22,8 +22,9 @@ router.post('/doAdd', async (ctx)=>{
   //获取表单数据
   let data = await db.insert('order', ctx.request.body);
 
-  ctx.body = 'create order success';
+  ctx.body = data.insertedId;
   console.log(data);
+  //console.log(data.insertedId)
 
 })
 

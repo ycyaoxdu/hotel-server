@@ -16,7 +16,13 @@ router.post('/', async (ctx)=>{
     //console.log(single)
 
     let item = await db.find('order', { "_id" : db.getObjectID(ctx.request.body._id)});
-    //console.log(item)
+
+
+    //console.log(ctx.request)
+
+    console.log(item)
+    console.log(item[0])
+    //console.log(item.ops[0].type)
 
     if(item[0].type == 'single'){
         var money = item[0].time * single
@@ -24,7 +30,7 @@ router.post('/', async (ctx)=>{
         var money = item[0].time * double
     }
 
-    let data = await db.update('order', {"_id":db.getObjectID(id)}, {
+    let data = await db.update('order', {"_id":db.getObjectID(ctx.request.body._id)}, {
         money
     })
     
